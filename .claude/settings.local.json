@@ -4,7 +4,18 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(npx prisma:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(sqlite3:*)",
+      "Bash(npx tsx:*)",
+      "Bash(git reset:*)",
+      "Bash(node test-phase2.js:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run build:*)",
+      "Bash(test:*)",
+      "Bash(npx shadcn@latest:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(tree:*)"
     ]
   }
 }
