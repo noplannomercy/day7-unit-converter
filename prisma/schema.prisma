@@ -2,10 +2,24 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
+}
+
+model Conversion {
+  id          String   @id @default(cuid())
+  category    String   // "length", "weight", "temperature"
+  value       Float
+  fromUnit    String
+  toUnit      String
+  result      Float
+  formula     String
+  isFavorite  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([isFavorite, createdAt(sort: Desc)])
+  @@index([createdAt(sort: Desc)])
 }
