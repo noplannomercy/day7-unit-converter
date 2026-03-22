@@ -3,7 +3,7 @@
 ## Project Overview
 Next.js 16 App Router application for unit conversions (length, weight, temperature) with SQLite persistence via Prisma.
 
-**Status:** Phase 2 Complete - Full conversion logic and database integration implemented.
+**Status:** v0.1.0.0 — QA tested, shipped as PR #1.
 
 ## Tech Stack
 - **Framework:** Next.js 16.1.1 (App Router)
