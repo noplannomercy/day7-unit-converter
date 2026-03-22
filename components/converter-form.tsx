@@ -172,7 +172,7 @@ export default function ConverterForm() {
             <label htmlFor="fromUnit" className="text-sm font-medium">
               From
             </label>
-            <Select value={fromUnit} onValueChange={setFromUnit}>
+            <Select key={`from-${category}`} value={fromUnit} onValueChange={setFromUnit}>
               <SelectTrigger id="fromUnit">
                 <SelectValue />
               </SelectTrigger>
@@ -191,7 +191,7 @@ export default function ConverterForm() {
             <label htmlFor="toUnit" className="text-sm font-medium">
               To
             </label>
-            <Select value={toUnit} onValueChange={setToUnit}>
+            <Select key={`to-${category}`} value={toUnit} onValueChange={setToUnit}>
               <SelectTrigger id="toUnit">
                 <SelectValue />
               </SelectTrigger>
@@ -219,7 +219,7 @@ export default function ConverterForm() {
           {result !== null && (
             <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
               <p className="text-lg font-semibold">
-                Result: {result.toFixed(6)} {toUnit}
+                Result: {parseFloat(result.toFixed(6))} {unitLabels[toUnit] || toUnit}
               </p>
               {formula && (
                 <p className="text-sm text-gray-600 mt-1">

@@ -44,7 +44,7 @@ export default function ConversionItem({
         <div className="flex-1 space-y-1">
           {/* Conversion Display */}
           <div className="font-medium text-lg">
-            {item.value} {item.fromUnit} → {item.result.toFixed(6)} {item.toUnit}
+            {item.value} {item.fromUnit} → {parseFloat(item.result.toFixed(6))} {item.toUnit}
           </div>
 
           {/* Formula */}
