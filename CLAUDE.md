@@ -23,12 +23,23 @@ npm run build                  # Production build with type checking
 npm run start                  # Start production server
 npm run lint                   # Run ESLint
 
+# Testing
+npm run test                   # Run all tests once (vitest)
+npm run test:watch             # Watch mode
+
 # Database
 npx prisma migrate dev         # Create and apply migrations
 npx prisma studio              # Open Prisma Studio GUI
 npx prisma generate            # Regenerate Prisma Client
 npx prisma db push             # Push schema changes (dev only)
 ```
+
+## Testing
+- **Framework:** Vitest + @testing-library/react (see TESTING.md)
+- **Run:** `npm run test` | **Directory:** `test/`
+- When writing new functions, write a corresponding test
+- When fixing a bug, write a regression test
+- Never commit code that makes existing tests fail
 
 ---
 
