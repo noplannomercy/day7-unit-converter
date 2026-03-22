@@ -39,7 +39,7 @@ export default function ConversionItem({
   })
 
   return (
-    <div className="p-4 border rounded-lg bg-white hover:shadow-md transition-shadow">
+    <div className="p-4 border rounded-lg bg-white dark:bg-gray-800 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 space-y-1">
           {/* Conversion Display */}

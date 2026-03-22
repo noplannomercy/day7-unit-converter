@@ -39,7 +39,7 @@ export default async function Home() {
 
         {/* Footer */}
         <footer className="mt-12 text-center text-sm text-gray-500 dark:text-gray-400">
-          Built with Next.js 14, Prisma, and shadcn/ui
+          Built with Next.js 16, Prisma, and shadcn/ui
         </footer>
       </div>
     </div>

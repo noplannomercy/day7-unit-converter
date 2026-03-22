@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from 'react'
 import { createConversion } from '@/app/actions/conversions'
-import type { Category, ConversionInput } from '@/types/conversion'
+import type { Category, ConversionInput, LengthUnit, WeightUnit, TemperatureUnit } from '@/types/conversion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -86,24 +86,24 @@ export default function ConverterForm() {
         input = {
           category: 'length',
           value: numValue,
-          fromUnit: fromUnit as any,
-          toUnit: toUnit as any,
+          fromUnit: fromUnit as LengthUnit,
+          toUnit: toUnit as LengthUnit,
         }
         break
       case 'weight':
         input = {
           category: 'weight',
           value: numValue,
-          fromUnit: fromUnit as any,
-          toUnit: toUnit as any,
+          fromUnit: fromUnit as WeightUnit,
+          toUnit: toUnit as WeightUnit,
         }
         break
       case 'temperature':
         input = {
           category: 'temperature',
           value: numValue,
-          fromUnit: fromUnit as any,
-          toUnit: toUnit as any,
+          fromUnit: fromUnit as TemperatureUnit,
+          toUnit: toUnit as TemperatureUnit,
         }
         break
     }

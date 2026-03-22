@@ -118,26 +118,29 @@ export async function toggleFavorite(
       }
     }
 
-    // IMPORTANT: Fetch current value from database first
-    // to avoid race condition (never trust client-side value)
-    const current = await prisma.conversion.findUnique({
-      where: { id },
-    })
+    // Atomic toggle: single query to avoid race condition
+    // Uses raw SQL to toggle in one operation
+    const result = await prisma.$executeRaw`
+      UPDATE Conversion SET isFavorite = NOT isFavorite WHERE id = ${id}
+    `
 
-    if (!current) {
+    if (result === 0) {
       return {
         success: false,
         error: 'Conversion not found',
       }
     }
 
-    // Toggle the favorite status
-    const updated = await prisma.conversion.update({
+    const updated = await prisma.conversion.findUnique({
       where: { id },
-      data: {
-        isFavorite: !current.isFavorite,
-      },
     })
+
+    if (!updated) {
+      return {
+        success: false,
+        error: 'Conversion not found',
+      }
+    }
 
     // Revalidate page
     revalidatePath('/')
@@ -192,24 +195,3 @@ export async function deleteConversion(
   }
 }
 
-// ============================================
-// Cleanup Old History (Optional - Auto-cleanup)
-// ============================================
-
-export async function cleanupOldHistory(): Promise<void> {
-  try {
-    // Delete non-favorite records older than 7 days
-    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-
-    await prisma.conversion.deleteMany({
-      where: {
-        isFavorite: false,
-        createdAt: {
-          lt: sevenDaysAgo,
-        },
-      },
-    })
-  } catch (error) {
-    console.error('Error cleaning up old history:', error)
-  }
-}
