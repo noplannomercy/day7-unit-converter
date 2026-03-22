@@ -124,4 +124,16 @@ describe('getFormula', () => {
   it('returns rate-based formula for weight', () => {
     expect(getFormula('weight', 'kg', 'lb')).toContain('1 kg =')
   })
+
+  it('returns correct temperature formula F→C', () => {
+    expect(getFormula('temperature', 'F', 'C')).toBe('(°F - 32) × 5/9 = °C')
+  })
+
+  it('returns correct temperature formula K→F', () => {
+    expect(getFormula('temperature', 'K', 'F')).toBe('(K - 273.15) × 9/5 + 32 = °F')
+  })
+
+  it('returns correct temperature formula C→K', () => {
+    expect(getFormula('temperature', 'C', 'K')).toBe('°C + 273.15 = K')
+  })
 })
