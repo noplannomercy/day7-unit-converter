@@ -50,3 +50,4 @@ test-phase2.js
 
 # gstack
 .gstack/
+.context/
